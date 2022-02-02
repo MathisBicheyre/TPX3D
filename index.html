@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title></title>
     <meta charset="UTF-8" />
     <script src="http://www.x3dom.org/download/1.3/x3dom.js"></script>
     <script src="http://www.x3dom.org/download/1.3/components/Geospatial.js"></script>
     <script src="http://www.x3dom.org/download/1.3/x3dom.swf"></script>
     <link rel="stylesheet" href="http://www.x3dom.org/download/1.3/x3dom.css" />
+
+    <script type="text/javascript">
+      window.n = 0;
+
+      function updateView(name) {
+        var inline = document.getElementById("_-"+name);
+        if(inline.getAttribute("render") == "true"){
+          inline.setAttribute("render", "false");
+        }
+        else {
+          inline.setAttribute("render", "true");
+        }
+      }
+
+      function nextView() {
+        var n = window.n;
+        var ID = window.ID;
+        var viewpoint = document.getElementById(ID[n]);
+
+        viewpoint.setAttribute("set_bind", "false");
+        n++;
+        if(n == ID.length){
+          n=0;
+        }
+        viewpoint = Viewpoints.item(n);
+        viewpoint.setAttribute("set_bind", "true");
+        window.n = n;
+      }
+    </script>
   </head>
 
   <body>
@@ -14,121 +43,55 @@
 
     <script src="src/index.js"></script>
 
-    Ici X3D
-    <x3d>
+    <button type="button" id="ARTbutton" onclick="updateView('ART')">ART</button>
+    <button type="button" id="DWXbutton" onclick="updateView('DWX')">DWX</button>
+    <button type="button" id="HAbutton" onclick="updateView('HA')">HA</button>
+    <br/>
+    <button type="button" id="NextView" onclick="nextView()">NextView</button>
+    <x3d width='1500px' height='600px'>
       <scene>
-        <Viewpoint
-          position="-0.63779 -20.47541 12.66314"
-          orientation="0.99811 -0.05222 0.03239 1.11198"
-          zNear="0"
-          zFar="33.15283"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1107VE-"
-          position="-2.88416 -3.68763 4.90620"
-          orientation="0.88633 -0.39857 -0.23570 1.13009"
-          zNear="0.00065"
-          zFar="33.15283"
-          centerOfRotation="0.00000 0.00000 0.00000"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1105BA-"
-          position="-0.94914 -0.11522 9.47589"
-          orientation="0.24503 0.34345 0.90665 2.23519"
-          zNear="0.00065"
-          zFar="33.15283"
-          centerOfRotation="-3.17892 -1.21490 6.95306"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1111POM"
-          position="-1.92714 -4.42054 3.70842"
-          orientation="0.75267 0.38016 0.53756 1.59918"
-          zNear="0.00125"
-          zFar="33.15283"
-          centerOfRotation="-3.14341 -4.01940 3.38006"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1101POM"
-          position="-3.66266 -4.57730 3.56095"
-          orientation="0.75267 0.38016 0.53756 1.59918"
-          zNear="0.00142"
-          zFar="33.15283"
-          centerOfRotation="-4.46916 -4.02800 3.28864"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1102VE-"
-          position="-3.77449 -5.48692 4.54295"
-          orientation="0.75267 0.38016 0.53756 1.59918"
-          zNear="0.00145"
-          zFar="33.15283"
-          centerOfRotation="-4.46916 -4.02800 3.28864"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1112VE-"
-          position="-1.57092 -4.72321 4.60611"
-          orientation="0.49972 0.51590 0.69579 1.82717"
-          zNear="0.00119"
-          zFar="33.15283"
-          centerOfRotation="-2.81826 -4.93877 4.24653"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1103VE-"
-          position="-3.59382 -5.25378 4.30008"
-          orientation="0.32857 0.57141 0.75202 2.28247"
-          zNear="0.00142"
-          zFar="33.15283"
-          centerOfRotation="-4.17018 -5.57003 4.10700"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <Viewpoint
-          id="viewpoint-0ART1113VE-"
-          position="-1.41458 -4.87924 4.29454"
-          orientation="0.32857 0.57141 0.75202 2.28247"
-          zNear="0.00121"
-          zFar="33.15283"
-          centerOfRotation="-4.17018 -5.57003 4.10700"
-          fieldOfView="0.78540"
-          description=""
-        ></Viewpoint>
-        <transform>
-          <Inline
-            id="_-ART"
-            nameSpaceName="_-ART"
-            mapDEFToID="true"
-            url="_-ART.x3d"
-          />
-        </transform>
-        <transform>
-          <Inline
-            id="_-DWX"
-            nameSpaceName="_-DWX"
-            mapDEFToID="true"
-            url="_-DWX.x3d"
-          />
-        </transform>
-        <transform>
-          <Inline
-            id="_-HA"
-            nameSpaceName="_-HA"
-            mapDEFToID="true"
-            url="_-HA.x3d"
-          />
-        </transform>
+          <Viewpoint position="-0.63779 -20.47541 12.66314" orientation="0.99811 -0.05222 0.03239 1.11198"
+                     zNear="0" zFar="33.15283" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1107VE-" position="-2.88416 -3.68763 4.90620" orientation="0.88633 -0.39857 -0.23570 1.13009"
+                     zNear="0.00065" zFar="33.15283" centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1105BA-" position="-0.94914 -0.11522 9.47589" orientation="0.24503 0.34345 0.90665 2.23519"
+                     zNear="0.00065" zFar="33.15283" centerOfRotation="-3.17892 -1.21490 6.95306" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1111POM" position="-1.92714 -4.42054 3.70842" orientation="0.75267 0.38016 0.53756 1.59918"
+                     zNear="0.00125" zFar="33.15283" centerOfRotation="-3.14341 -4.01940 3.38006" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1101POM" position="-3.66266 -4.57730 3.56095" orientation="0.75267 0.38016 0.53756 1.59918"
+                     zNear="0.00142" zFar="33.15283" centerOfRotation="-4.46916 -4.02800 3.28864" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1102VE-" position="-3.77449 -5.48692 4.54295" orientation="0.75267 0.38016 0.53756 1.59918"
+                     zNear="0.00145" zFar="33.15283" centerOfRotation="-4.46916 -4.02800 3.28864" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint  id="viewpoint-0ART1112VE-" position="-1.57092 -4.72321 4.60611" orientation="0.49972 0.51590 0.69579 1.82717"
+                      zNear="0.00119" zFar="33.15283" centerOfRotation="-2.81826 -4.93877 4.24653" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1103VE-" position="-3.59382 -5.25378 4.30008" orientation="0.32857 0.57141 0.75202 2.28247"
+                     zNear="0.00142" zFar="33.15283" centerOfRotation="-4.17018 -5.57003 4.10700" fieldOfView="0.78540" description=""></Viewpoint>
+          <Viewpoint id="viewpoint-0ART1113VE-" position="-1.41458 -4.87924 4.29454" orientation="0.32857 0.57141 0.75202 2.28247"
+                     zNear="0.00121" zFar="33.15283" centerOfRotation="-4.17018 -5.57003 4.10700" fieldOfView="0.78540" description=""></Viewpoint>
+          <transform>
+              <Inline id="_-ART" nameSpaceName="_-ART" mapDEFToID="true" url="_-ART.x3d"/>
+          </transform>
+          <transform>
+              <Inline id="_-DWX" nameSpaceName="_-DWX" mapDEFToID="true" url="_-DWX.x3d"/>
+          </transform>
+          <transform>
+              <Inline id="_-HA" nameSpaceName="_-HA" mapDEFToID="true" url="_-HA.x3d"/>
+          </transform>
       </scene>
-    </x3d>
+  </x3d>
   </body>
+  <script>
+    var ID = [];
+    var Viewpoints = document.getElementsByTagName("viewpoint");
+    var i = 0;
+
+    while(Viewpoints.item(i)){
+      if(Viewpoints.item(i).id){
+        ID.push(Viewpoints.item(i).id);
+      }
+      i++;
+    }
+
+    window.ID = ID;
+  </script>
 </html>
